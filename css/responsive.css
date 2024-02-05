@@ -1,0 +1,31 @@
+@charset "uft-8";
+@media screen and (max-width:1280px){
+    .header{
+        padding: 0 30px;
+    }
+    .logo{
+        width: 150px;
+    }
+    .gnb{
+        margin-right: -26px;
+    }
+    .gnb > li >a{
+        padding: 0 26px;
+    }
+}
+@media screen and (max-width:1024px){
+    .logo{
+        width: 120px;
+    }
+    .header{
+        height: 70px;
+    }
+    .gnb{
+        display: none;
+    }
+    .mbt{
+        display: block;
+        top: 40%;
+    }
+
+}
