@@ -55,12 +55,12 @@ body {
   transition: all 0.3s;
 }
 /* js기능추가  */
-.gotop.active{
+.gotop.active {
   bottom: 20px;
   visibility: visible;
   opacity: 1;
 }
-.gotop.active-footer{
+.gotop.active-footer {
   bottom: 320px;
 }
 /* 전체 레이아웃 */
@@ -257,6 +257,26 @@ body {
   font-weight: 700;
   line-height: 1.3;
 }
+/* 일반 슬라이드 */
+.sw-visual .swiper-slide .visual-box h2 {
+  opacity: 0;
+  transform: translateX(-10%);
+}
+.sw-visual .swiper-slide .visual-box p {
+  opacity: 0;
+  transform: translateY(30px);
+}
+/* 스와이퍼가 바꿨을때 슬라이드 */
+.sw-visual .swiper-slide-active .visual-box h2 {
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 0.5s;
+}
+.sw-visual .swiper-slide-active .visual-box p {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.5s;
+}
 .visual-box .inner p {
   opacity: 0.9;
   margin-top: 10px;
@@ -310,7 +330,54 @@ body {
 .sw-visual-control button:hover i {
   opacity: 1;
 }
+/* visual -pg js출력내용 css */
+.sw-visual-pg {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+ 
+  top: calc(50% + 230px);
+  z-index: 9;
+  width: 100%;
+  max-width: 1420px;
+}
+.sw-visual-pg-list {
+  position: relative;
+  display: flex;
+}
+.sw-visual-pg-list > li {
+  position: relative;
+  width: 85px;
+  padding: 10px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+}
+.sw-visual-pg-list > li::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #fff;
+  opacity: 0.4;
+}
+.sw-visual-pg-list > li::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #fff;
 
+}
+.sw-visual-pg-list > li.active::after{
+transition: all 1.5s;
+width: 100%;
+}
 /* 서비스 */
 .service {
   position: relative;

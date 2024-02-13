@@ -50,7 +50,28 @@ window.onload = function () {
     }
   });
 
-  // swiper적용
+  // 비주얼 슬라이드
+  // 1. 슬라이드(.swiper-slide) 개수 만큼 li 를 생성하기
+  const swSlideCount = document.querySelectorAll(
+    ".sw-visual .swiper-slide"
+  ).length;
+
+  // 2. li 태그 출력 장소(UL 태그) 저장
+  const swSlidePgUl = document.querySelector(".sw-visual-pg-list");
+
+  // 3. li 에 html 로 작성할 글자를 생성한다.
+  let swVisualHtml = ``;
+  for (let i = 0; i < swSlideCount; i++) {
+    swVisualHtml = swVisualHtml + `<li>${i + 1}</li>`;
+  }
+
+  // 4. html 을 추가해 준다.
+  swSlidePgUl.innerHTML = swVisualHtml;
+
+  // 5. 페이지네이션 관련 (코딩으로 생성한 li 태그 저장)
+  const swViusalPgLi = document.querySelectorAll(".sw-visual-pg-list > li");
+  // console.log(swViusalPgLi);
+  //비주얼 swiper적용
   const swiper = new Swiper(".sw-visual", {
     effect: "fade",
     loop: true,
@@ -68,7 +89,27 @@ window.onload = function () {
       prevEl: ".sw-visual-prev",
     },
   });
-
+  // swiper 가 최초 생성될때
+  swViusalPgLi[0].classList.add("active");
+  // swiper가 바뀔때 마다 실행
+  // swiper의 api 를 참조해서 작성
+  swiper.on("slideChange" , function(){
+    swViusalPgLi.forEach((item, index)=>{
+      if(swiper.realIndex === index){
+        item.classList.add("active")
+      }
+      else{
+        item.classList.remove("active")
+      }
+    })
+  })
+// li에 클릭했을때 스와퍼가 적용
+swViusalPgLi.forEach((item ,index)=>{
+  item.addEventListener("click" , ()=>{
+    swiper.slideToLoop(index, 500 )
+  })
+})
+  // ========================================================
   // besiness 스와퍼 적용
   const swBusiness = new Swiper(".sw-business", {
     breakpoints: {
@@ -98,8 +139,7 @@ window.onload = function () {
     handler: function (direction) {
       if (direction === "down") {
         gotop.classList.add("active-footer");
-      }
-      else{
+      } else {
         gotop.classList.remove("active-footer");
       }
     },
