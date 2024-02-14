@@ -148,6 +148,7 @@ swViusalPgLi.forEach((item ,index)=>{
   let waypoint_service = new Waypoint({
     element: document.querySelector(".service"),
     handler: function (direction) {
+      console.log(direction);
       if (direction === "down") {
         gotop.classList.add("active");
       } else {
@@ -156,4 +157,10 @@ swViusalPgLi.forEach((item ,index)=>{
     },
     offset: "80%",
   });
+
+  // business모달 기능
+  const businessModal = document.querySelector(".business-modal");
+  businessModal.addEventListener("click",function(){
+    businessModal.style.display = "none"
+  })
 };
